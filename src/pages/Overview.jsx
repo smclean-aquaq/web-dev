@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
@@ -8,6 +8,8 @@ import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
 import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
+import axios from 'axios'
+import { Component } from 'react';
 
 const DropDown = ({ currentMode }) => (
   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
@@ -15,7 +17,37 @@ const DropDown = ({ currentMode }) => (
   </div>
 );
 
+const authorization = `Basic dXNlcjpwYXNz`;
+const url = 'https://homer.aquaq.co.uk:8025/executeFunction'
+
 const Overview = () => {
+
+  const getCurrentPrice = async () => {
+    try {
+      const response = await axios({
+        url: url,
+        method: 'post',
+        headers: {
+            Authorization: authorization,
+        },
+        data: {
+          "function_name": ".qrest.price", 
+          "arguments": { 
+          "s": "DELL"
+          }        
+        }
+      }).then(response => response.data).then(response => response.result);
+
+      console.log(response)
+
+    } catch (error) {console.log(error.response);}
+  }
+
+
+    useEffect(() => {
+      getCurrentPrice();
+    }, []);
+
   const { currentColor, currentMode } = useStateContext();
 
   return (
@@ -25,7 +57,7 @@ const Overview = () => {
           <div className="flex justify-between items-center">
             <div>
               <p className="font-bold text-gray-400">Earnings</p>
-              <p className="text-2xl">$63,448.78</p>
+              <p className="text-2xl">$600</p>
             </div>
             <button
               type="button"
