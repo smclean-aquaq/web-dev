@@ -1,4 +1,7 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import CurrentPrices from '../components/getCurrentPrices';
 import PriceHistory from '../components/getPriceHistory';
 
@@ -163,7 +166,7 @@ const Overview = () => {
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Current Instrument Price</p>
-            {/* <DropDown currentMode={currentMode} /> */}
+            <DropDown currentMode={currentMode} />
           </div>
           <div className="mt-10 w-72 md:w-400">
           <CurrentPrices />
@@ -183,11 +186,11 @@ const Overview = () => {
         </div>
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760">
           <div className="flex justify-between items-center gap-2 mb-10">
-            <p className="text-xl font-semibold">Price History for </p>
+            <p className="text-xl font-semibold">Price History for AAPL</p>
             <DropDown currentMode={currentMode} />
           </div>
           <div className="md:w-full overflow-auto">
-            <LineChart />
+            <PriceHistory />
           </div>
         </div>
       </div>
