@@ -19,9 +19,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.price", 
           "arguments": {"s": "DELL"}
         }
-        }).then(res => res.data).then(res => {
-            console.log(res);
-            this.setState({ instruments: res.result });
+        }).then(res => res.data).then(res => {this.setState({ instruments: res.result });
+        console.log('current price', res.result);
         });
     }
 
@@ -29,7 +28,7 @@ const authorization = `Basic dXNlcjpwYXNz`;
       return (
         <div>
           {this.state.instruments.map(instrument => (
-          <div key={instrument.sym} className="flex justify-between mt-4">
+          <div key={instrument.price} className="flex justify-between mt-4">
               <div className="flex gap-4">
               <div>
               <p className="text-md font-semibold">{instrument.sym}</p>

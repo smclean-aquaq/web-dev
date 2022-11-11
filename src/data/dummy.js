@@ -2299,14 +2299,14 @@ export const lineChartData = [
 export const dropdownData = [
   {
     Id: '1',
-    Time: 'March 2021',
+    Time: 'AAPL',
   },
   {
     Id: '2',
-    Time: 'April 2021',
+    Time: 'IBM',
   }, {
     Id: '3',
-    Time: 'May 2021',
+    Time: 'GOOG',
   },
 ];
 export const SparklineAreaData = [
