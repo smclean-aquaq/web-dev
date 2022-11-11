@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Table from 'react-bootstrap/Table';
 
 import CurrentPrices from '../components/getCurrentPrices';
 import PriceHistory from '../components/getPriceHistory';
@@ -11,14 +10,14 @@ import { GoPrimitiveDot } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
 import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
-import { earningData, medicalproBranding, weeklyStats, dropdownData, SparklineAreaData, ecomPieChartData } from '../data/dummy';
+import { earningData, medicalproBranding, weeklyStats, dropdownDate, dropdownSym, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
 
 
-const DropDown = ({ currentMode }) => (
+const DropDownDate = ({ currentMode }) => (
   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
-    <DropDownListComponent id="time" fields={{ text: 'Time', value: 'Id' }} style={{ border: 'none', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={dropdownData} popupHeight="220px" popupWidth="120px" />
+    <DropDownListComponent id="time" fields={{ text: 'Time', value: 'Id' }} style={{ border: 'none', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={dropdownDate} popupHeight="220px" popupWidth="120px" />
   </div>
 );
 
@@ -167,7 +166,7 @@ const Overview = () => {
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Current Instrument Price</p>
-            {/* <DropDown currentMode={currentMode} /> */}
+            {/* <DropDownDate currentMode={currentMode} /> */}
           </div>
           <div className="mt-10 w-72 md:w-400">
           <CurrentPrices />
@@ -185,15 +184,16 @@ const Overview = () => {
             <p className="mt-4 text-gray-400 text-sm">Current Date: {date}</p>
           </div>
         </div>
-        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760">
-          <div className="flex justify-between items-center gap-2 mb-10">
+        {/* <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760"> */}
+        <PriceHistory />
+          {/* <div className="flex justify-between items-center gap-2 mb-10">
             <p className="text-xl font-semibold">Price History for AAPL</p>
-            <DropDown currentMode={currentMode} />
+            <DropDownDate currentMode={currentMode} />
           </div>
           <div className="md:w-full overflow-auto">
             <PriceHistory />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
 
       {/* <div className="flex flex-wrap justify-center">

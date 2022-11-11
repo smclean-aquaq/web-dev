@@ -2296,7 +2296,24 @@ export const lineChartData = [
     { x: new Date(2011, 0, 1), y: 100 },
   ],
 ];
-export const dropdownData = [
+
+const current = new Date();
+const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+export const dropdownDate = [
+  {
+    Id: '1',
+    Time: '1 Day',
+  },
+  {
+    Id: '2',
+    Time: '2 Day',
+  }, {
+    Id: '3',
+    Time: '3 Day',
+  },
+];
+export const dropdownSym = [
   {
     Id: '1',
     Time: 'AAPL',

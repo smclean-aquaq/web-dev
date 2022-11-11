@@ -17,7 +17,7 @@ const authorization = `Basic dXNlcjpwYXNz`;
         headers: {Authorization: authorization}, 
         data: {
           "function_name": ".qrest.price", 
-          "arguments": {"s": "DELL"}
+          "arguments": {}
         }
         }).then(res => res.data).then(res => {this.setState({ instruments: res.result });
         console.log('current price', res.result);
