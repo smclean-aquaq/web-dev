@@ -13,7 +13,7 @@ import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
 import { earningData, medicalproBranding, weeklyStats, dropdownDate, dropdownSym, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
-
+import { ChartsHeader } from '../components';
 
 const DropDownDate = ({ currentMode }) => (
   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
@@ -185,7 +185,6 @@ const Overview = () => {
           </div>
         </div>
         {/* <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760"> */}
-        <PriceHistory />
           {/* <div className="flex justify-between items-center gap-2 mb-10">
             <p className="text-xl font-semibold">Price History for AAPL</p>
             <DropDownDate currentMode={currentMode} />
@@ -195,7 +194,15 @@ const Overview = () => {
           </div> */}
         {/* </div> */}
       </div>
+      <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+        <ChartsHeader category="Price History" title='Line Chart' />
+        <div className="w-full">
+          <PriceHistory />
+        </div>
+      </div>
 
+      
+      
       {/* <div className="flex flex-wrap justify-center">
         <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
@@ -229,8 +236,8 @@ const Overview = () => {
               <SparkLine currentColor={currentColor} id="area-sparkLine" height="160px" type="Area" data={SparklineAreaData} width="320" color="rgb(242, 252, 253)" />
             </div>
           </div>
-
         </div>
+
         <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>

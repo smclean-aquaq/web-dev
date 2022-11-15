@@ -32,9 +32,10 @@ const authorization = `Basic dXNlcjpwYXNz`;
               <div className="flex gap-4">
               <div>
               <p className="text-md font-semibold">{instrument.sym}</p>
+              {/* <p className="text-sm text-gray-400">Full Company Name Here</p> */}
               </div>
               </div>
-          <p>${instrument.price}</p>
+          <p>$ {instrument.price}</p>
           </div>
           ))}
         </div>

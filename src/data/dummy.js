@@ -2315,16 +2315,36 @@ export const dropdownDate = [
 ];
 export const dropdownSym = [
   {
-    Id: '1',
-    Time: 'AAPL',
+    sym: 'AAPL',
   },
   {
-    Id: '2',
-    Time: 'IBM',
-  }, {
-    Id: '3',
-    Time: 'GOOG',
+    sym: 'IBM',
+  }, 
+  {
+    sym: 'GOOG',
   },
+  {
+    sym: 'AIG',
+  },
+  {
+    sym: 'AMD',
+  }, 
+  {
+    sym: 'DELL',
+  },
+  {
+    sym: 'DOW',
+  },
+  {
+    sym: 'HPQ',
+  }, 
+  {
+    sym: 'INTC',
+  },
+  {
+    sym: 'MSFT',
+  },
+
 ];
 export const SparklineAreaData = [
   { x: 1, yval: 2 },
@@ -2344,21 +2364,21 @@ export const lineCustomSeries = [
     marker: { visible: true, width: 10, height: 10 },
     type: 'Line' },
 
-  { dataSource: lineChartData[1],
-    xName: 'x',
-    yName: 'y',
-    name: 'England',
-    width: '2',
-    marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+  // { dataSource: lineChartData[1],
+  //   xName: 'x',
+  //   yName: 'y',
+  //   name: 'England',
+  //   width: '2',
+  //   marker: { visible: true, width: 10, height: 10 },
+  //   type: 'Line' },
 
-  { dataSource: lineChartData[2],
-    xName: 'x',
-    yName: 'y',
-    name: 'India',
-    width: '2',
-    marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+  // { dataSource: lineChartData[2],
+  //   xName: 'x',
+  //   yName: 'y',
+  //   name: 'India',
+  //   width: '2',
+  //   marker: { visible: true, width: 10, height: 10 },
+  //   type: 'Line' },
 
 ];
 
