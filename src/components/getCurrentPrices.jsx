@@ -39,6 +39,24 @@ const authorization = `Basic dXNlcjpwYXNz`;
           </div>
           ))}
         </div>
+        // <div class="table w-full p-2">
+        //   <table class="w-full border">
+        //     <thead>
+        //       <tr class="bg-gray-50 border-b text-center">
+        //         <th class="border-r p-2">Sym</th>
+        //         <th class="border-r p-2">Price</th>
+        //       </tr>
+        //     </thead>
+        //     {this.state.instruments.map(instrument => (
+        //     <tbody>
+        //       <tr class="bg-gray-50 text-center">
+        //         <td class="p-2 border-r">{instrument.sym}</td>
+        //         <td class="p-2 border-r">${instrument.price}</td>
+        //       </tr>
+        //     </tbody>
+        //     ))}
+        //   </table>
+        // </div>
       )
     }
   }

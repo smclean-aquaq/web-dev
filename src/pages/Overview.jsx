@@ -195,7 +195,7 @@ const Overview = () => {
         {/* </div> */}
       </div>
       <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
-        <ChartsHeader category="Price History" title='Line Chart' />
+        <ChartsHeader category="Price History" />
         <div className="w-full">
           <PriceHistory />
         </div>
