@@ -32,7 +32,7 @@ getOneDay = () => {
     method: 'post',
     headers: {Authorization: authorization},
     data: {
-        "function_name": ".qrest.vol", 
+        "function_name": ".qrest.maxvol", 
         "arguments": {}
     }
     }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
@@ -46,7 +46,7 @@ getTwoDay = () => {
     method: 'post',
     headers: {Authorization: authorization},
     data: {
-        "function_name": ".qrest.volone", 
+        "function_name": ".qrest.maxvolone", 
         "arguments": {}
     }
     }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
@@ -60,7 +60,7 @@ getThreeDay = () => {
     method: 'post',
     headers: {Authorization: authorization},
     data: {
-        "function_name": ".qrest.voltwo", 
+        "function_name": ".qrest.maxvoltwo", 
         "arguments": {}
     }
     }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
@@ -86,7 +86,6 @@ render() {
                 5D
                 </button>
             </div>
-            <p className="text-gray-400 text-sm">Current Date: {date}</p>
         </div>
         <div className="flex justify-between mt-8">
             <div className="flex gap-4">

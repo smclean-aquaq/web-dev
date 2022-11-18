@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import CurrentPrices from '../components/getCurrentPrices';
 import PriceHistory from '../components/getPriceHistory';
 import MaxVolume from '../components/getMaxVol';
+import ValueCache from '../components/getValueCache';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
@@ -189,6 +190,15 @@ const { currentColor, currentMode } = useStateContext();
               />
             </div>
               <p className="mt-4 text-gray-400 text-sm">Current Date: {date}</p>
+          </div>
+        </div>  
+
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-3/5">
+          <div className="flex justify-between items-center gap-2">
+            <p className="text-xl font-semibold">Value Cache Table</p>
+          </div>
+          <div className="mt-5 w-72 md:w-400 w-full">
+            <ValueCache className="w-full"/>
           </div>
         </div>  
 
