@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { useStateContext } from '../contexts/ContextProvider';
+
 
 const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
@@ -31,32 +33,14 @@ const authorization = `Basic dXNlcjpwYXNz`;
           <div key={instrument.price} className="flex justify-between mt-4">
               <div className="flex gap-4">
               <div>
-              <p className="text-md font-semibold">{instrument.sym}</p>
-              {/* <p className="text-sm text-gray-400">Full Company Name Here</p> */}
+              <p>{instrument.sym}</p>
               </div>
               </div>
           <p>$ {instrument.price}</p>
           </div>
           ))}
         </div>
-        // <div class="table w-full p-2">
-        //   <table class="w-full border">
-        //     <thead>
-        //       <tr class="bg-gray-50 border-b text-center">
-        //         <th class="border-r p-2">Sym</th>
-        //         <th class="border-r p-2">Price</th>
-        //       </tr>
-        //     </thead>
-        //     {this.state.instruments.map(instrument => (
-        //     <tbody>
-        //       <tr class="bg-gray-50 text-center">
-        //         <td class="p-2 border-r">{instrument.sym}</td>
-        //         <td class="p-2 border-r">${instrument.price}</td>
-        //       </tr>
-        //     </tbody>
-        //     ))}
-        //   </table>
-        // </div>
+        
       )
     }
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { AiOutlineStock } from 'react-icons/ai';
+import { AiOutlineStock, FcBarChart } from 'react-icons/fc';
 import { MdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
@@ -25,7 +25,7 @@ const Sidebar = () => {
         <>
           <div className="flex justify-between items-center">
             <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-              <AiOutlineStock /> <span>AquaQ Analytics</span>
+              <FcBarChart /> <span>AquaQ Analytics</span>
             </Link>
             <TooltipComponent content="Menu" position="BottomCenter">
               <button

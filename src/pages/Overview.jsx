@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import CurrentPrices from '../components/getCurrentPrices';
 import PriceHistory from '../components/getPriceHistory';
+import MaxVolume from '../components/getMaxVol';
 
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
@@ -24,13 +25,14 @@ const DropDownDate = ({ currentMode }) => (
 const current = new Date();
 const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
-
 const Overview = () => {
  
-  const { currentColor, currentMode } = useStateContext();
+const { currentColor, currentMode } = useStateContext();
+
+
 
   return (
-    <div className="mt-24">
+    <div>
       {/* <div className="flex flex-wrap lg:flex-nowrap justify-center ">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
           <div className="flex justify-between items-center">
@@ -162,16 +164,21 @@ const Overview = () => {
         </div>
       </div> */}
 
-      <div className="flex gap-10 m-4 flex-wrap justify-center">
+      <div className="flex gap-4 m-4 flex-wrap justify-left w-full">
+
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Current Instrument Price</p>
-            {/* <DropDownDate currentMode={currentMode} /> */}
           </div>
-          <div className="mt-10 w-72 md:w-400">
-          <CurrentPrices />
+          <div className="mt-10 w-72 md:w-400" >
+            <div className="flex justify-between mt-4">
+              <div className="flex gap-4">
+              <p className="text-md font-semibold text-#1a97f5">Sym</p>
+              </div>
+              <p className="text-md font-semibold text-#1a97f5">Price</p>
+            </div >
+            <CurrentPrices />
           </div>
-
           <div className="flex justify-between items-center mt-5 border-t-1 border-color">
             <div className="mt-3">
               <Button
@@ -181,23 +188,57 @@ const Overview = () => {
                 borderRadius="8px"
               />
             </div>
-            <p className="mt-4 text-gray-400 text-sm">Current Date: {date}</p>
+              <p className="mt-4 text-gray-400 text-sm">Current Date: {date}</p>
           </div>
-        </div>
-        {/* <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl w-96 md:w-760"> */}
-          {/* <div className="flex justify-between items-center gap-2 mb-10">
-            <p className="text-xl font-semibold">Price History for AAPL</p>
-            <DropDownDate currentMode={currentMode} />
+        </div>  
+
+        <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
+          <div className="flex justify-between items-center gap-2">
+            <p className="text-xl font-semibold">Highest Traded Instrument</p>
           </div>
-          <div className="md:w-full overflow-auto">
-            <PriceHistory />
-          </div> */}
-        {/* </div> */}
+          <div className="mt-5 w-72 md:w-400">
+            <MaxVolume/>
+          </div>
+        </div>     
+
       </div>
+
+      {/* <div className="flex gap-10 m-4 flex-wrap justify-left">
+      <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
+        <div className="flex justify-between items-center gap-2">
+          <p className="text-xl font-semibold">Highest Traded Instrument</p>
+        </div>
+        <div className="mt-5 w-72 md:w-400">
+          <MaxVolume/>
+        </div>
+      </div>
+      </div> */}
+
       <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
         <ChartsHeader category="Price History" />
         <div className="w-full">
           <PriceHistory />
+        </div>
+      </div>
+
+      <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+        <div className="flex justify-between items-center gap-2">
+          <p className="text-xl font-semibold">Min / Max Instrument Price</p>
+        </div>
+        <div className="mt-10 w-72 md:w-400 w-max" >
+          <div className="flex justify-between mt-4">
+            <div className="flex gap-4">
+            <p className="text-md font-semibold text-#1a97f5">Sym</p>
+            </div>
+            <div className="flex gap-4">
+            <p className="text-md font-semibold text-#1a97f5">Minimum Price</p>
+            </div>
+            <div className="flex gap-4">
+            <p className="text-md font-semibold text-#1a97f5">Maximum Price</p>
+            </div>
+          </div >
+          
+          {/* CALL FUNCTION HERE */}
         </div>
       </div>
 
