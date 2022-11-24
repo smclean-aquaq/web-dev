@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from "react";
 
-const URL = 'https://homer.aquaq.co.uk:8020/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
 
 
@@ -22,28 +22,28 @@ const authorization = `Basic dXNlcjpwYXNz`;
                     "arguments": {}
                 }
                 }).then(res => res.data).then(res => {this.setState({ instruments: res.result });
-                console.log('value cache', res.result);
+                // console.log('value cache', res.result);
                 });
         }, 1000);
         }
 
         render() {
             return (
-            <div class="table w-full p-2">
-                <table class="w-full border">
+            <div className="table w-full p-2">
+                <table className="w-full border">
                     <thead>
-                        <tr class="bg-gray-50 border-b ">
-                            <th class="border-r p-2">Sym</th>
-                            <th class="border-r p-2">Price</th>
-                            <th class="border-r p-2"></th>
+                        <tr className="bg-gray-50 border-b ">
+                            <th className="border-r p-2">Sym</th>
+                            <th className="border-r p-2">Price</th>
+                            <th className="border-r p-2"></th>
                         </tr>
                     </thead>
                     {this.state.instruments.map(instrument => (
                     <tbody>
-                        <tr class="bg-gray-50 items-center transition duration-150 ease-in-out hover:bg-gray-100">
-                            <td class="p-2 border-r text-md font-semibold">{instrument.sym}</td>
-                            <td class={`text-${instrument.pcColor} p-2 border-r text-md font-semibold`}>${instrument.lastprice.toFixed(2)}</td>
-                            <td class="p-2 border-r">
+                        <tr className="bg-gray-50 items-center transition duration-150 ease-in-out hover:bg-gray-100">
+                            <td className="p-2 border-r text-md font-semibold">{instrument.sym}</td>
+                            <td className={`text-${instrument.pcColor} p-2 border-r text-md font-semibold`}>${instrument.lastprice.toFixed(2)}</td>
+                            <td className="p-2 border-r">
                                 <a href="#">
                                     <svg 
                                     xmlns="http://www.w3.org/2000/svg" 

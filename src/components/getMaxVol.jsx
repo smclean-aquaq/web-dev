@@ -32,7 +32,7 @@ getOneDay = () => {
     method: 'post',
     headers: {Authorization: authorization},
     data: {
-        "function_name": ".qrest.maxvol", 
+        "function_name": ".qrest.vol", 
         "arguments": {}
     }
     }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 

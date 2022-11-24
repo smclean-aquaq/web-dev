@@ -6,22 +6,23 @@ import CurrentPrices from '../components/getCurrentPrices';
 import PriceHistory from '../components/getPriceHistory';
 import MaxVolume from '../components/getMaxVol';
 import ValueCache from '../components/getValueCache';
+import MaxMin from '../components/getMinMax';
 
-import { BsCurrencyDollar } from 'react-icons/bs';
-import { GoPrimitiveDot } from 'react-icons/go';
-import { IoIosMore } from 'react-icons/io';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+// import { BsCurrencyDollar } from 'react-icons/bs';
+// import { GoPrimitiveDot } from 'react-icons/go';
+// import { IoIosMore } from 'react-icons/io';
+// import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
-import { earningData, medicalproBranding, weeklyStats, dropdownDate, dropdownSym, SparklineAreaData, ecomPieChartData } from '../data/dummy';
+// import { earningData, medicalproBranding, weeklyStats, dropdownDate, dropdownSym, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-import product9 from '../data/product9.jpg';
+// import product9 from '../data/product9.jpg';
 import { ChartsHeader } from '../components';
 
-const DropDownDate = ({ currentMode }) => (
-  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
-    <DropDownListComponent id="time" fields={{ text: 'Time', value: 'Id' }} style={{ border: 'none', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={dropdownDate} popupHeight="220px" popupWidth="120px" />
-  </div>
-);
+// const DropDown = () => (
+//   <div className="w-28 border-1 border-color px-3 py-2 rounded-md text-sm font-medium">
+//     <DropDownListComponent fields={{ text: 'sym' }} style={{ border: 'none' }} value="1" dataSource={dropdownSym} popupHeight="220px" popupWidth="120px" />
+//   </div>
+// );
 
 const current = new Date();
 const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -213,21 +214,13 @@ const { currentColor, currentMode } = useStateContext();
 
       </div>
 
-      {/* <div className="flex gap-10 m-4 flex-wrap justify-left">
-      <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
-        <div className="flex justify-between items-center gap-2">
-          <p className="text-xl font-semibold">Highest Traded Instrument</p>
-        </div>
-        <div className="mt-5 w-72 md:w-400">
-          <MaxVolume/>
-        </div>
-      </div>
-      </div> */}
-
       <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
         <ChartsHeader category="Price History" />
         <div className="w-full">
-          <PriceHistory />
+        <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
+        {/* <DropDown /> */}
+        </div>
+        <PriceHistory />
         </div>
       </div>
 
@@ -236,19 +229,7 @@ const { currentColor, currentMode } = useStateContext();
           <p className="text-xl font-semibold">Min / Max Instrument Price</p>
         </div>
         <div className="mt-10 w-72 md:w-400 w-max" >
-          <div className="flex justify-between mt-4">
-            <div className="flex gap-4">
-            <p className="text-md font-semibold text-#1a97f5">Sym</p>
-            </div>
-            <div className="flex gap-4">
-            <p className="text-md font-semibold text-#1a97f5">Minimum Price</p>
-            </div>
-            <div className="flex gap-4">
-            <p className="text-md font-semibold text-#1a97f5">Maximum Price</p>
-            </div>
-          </div >
-          
-          {/* CALL FUNCTION HERE */}
+          <div><MaxMin /></div>
         </div>
       </div>
 
