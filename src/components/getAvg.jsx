@@ -156,8 +156,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
         <ChartComponent 
         id="line-chart"
         height="420px"
-        primaryXAxis={{valueType:"Category", title: "Time", enableAutoIntervalOnZooming: true}}
-        primaryYAxis={{title: "Running Average Price $"}}
+        primaryXAxis={{valueType:"Category", title: "Time", enableAutoIntervalOnZooming: true, interval: 12, intervalType:'Hours', rangePadding:'None'}}
+        primaryYAxis={{title: "Dollar Price ($)"}}
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
         zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true, mode: "X"}}

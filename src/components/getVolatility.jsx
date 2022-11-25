@@ -32,6 +32,7 @@ export default class Vol extends React.Component {
 
   componentDidMount() {
     
+      this.state.todaydate = true;
       axios({
         url:URL,
         method: 'post',
@@ -41,8 +42,8 @@ export default class Vol extends React.Component {
           "arguments": {"s": "AAPL"}
         }
       }).then(res => res.data).then(res => {
-        this.setState({aapls:res.result});
-        console.log('aapl', this.state.aapls);
+        this.setState({prices:res.result});
+        console.log('aapl', this.state.prices);
       });
     
       

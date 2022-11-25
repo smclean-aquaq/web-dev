@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
-const URL = 'https://homer.aquaq.co.uk:8008/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
   export default class MaxMin extends React.Component {
