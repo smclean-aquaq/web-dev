@@ -9,7 +9,7 @@ const authorization = `Basic dXNlcjpwYXNz`;
 export default class Vol extends React.Component {
 
     state = {
-      instruments: [],
+      vol: [],
     };
     
     state = {
@@ -26,8 +26,8 @@ export default class Vol extends React.Component {
     }
   
     handleChange = (e) => {
-      this.setState({sym: e.target.value});
-      console.log(`${this.state.sym}`)
+      this.setState({symbol: e.target.value});
+      console.log(`${this.state.symbol}`)
     } 
 
   componentDidMount() {
@@ -41,9 +41,9 @@ export default class Vol extends React.Component {
           "function_name": ".qrest.getvolone",
           "arguments": {"s": "AAPL"}
         }
-      }).then(res => res.data).then(res => {
-        this.setState({prices:res.result});
-        console.log('aapl', this.state.prices);
+      }).then(resVol => resVol.data).then(resVol => {
+        this.setState({vol:resVol.result});
+        console.log('aapl vol', this.state.vol);
       });
     
       
@@ -59,11 +59,11 @@ export default class Vol extends React.Component {
         headers: {Authorization: authorization},
         data: {
           "function_name": ".qrest.getvolone",
-          "arguments": {"s":`${this.state.sym}`}
+          "arguments": {"s":`${this.state.symbol}`}
         }
-      }).then(res => res.data).then(res => {
-        this.setState({ prices: res.result });
-        console.log('1 DAY', this.state.prices);
+      }).then(resVol => resVol.data).then(resVol => {
+        this.setState({ vol: resVol.result });
+        console.log('1 DAY', this.state.vol);
   
       });
   
@@ -80,11 +80,11 @@ export default class Vol extends React.Component {
         headers: {Authorization: authorization},
         data: {
           "function_name": ".qrest.testvolthr",
-          "arguments": {"s":`${this.state.sym}`}
+          "arguments": {"s":`${this.state.symbol}`}
         }
-      }).then(res => res.data).then(res => {
-        this.setState({ prices: res.result });
-        console.log('1 DAY', this.state.prices);
+      }).then(resVol => resVol.data).then(resVol => {
+        this.setState({ vol: resVol.result });
+        console.log('1 DAY', this.state.vol);
   
       });
   
@@ -98,42 +98,42 @@ export default class Vol extends React.Component {
       headers: {Authorization: authorization},
       data: {
         "function_name": ".qrest.volfiveget",
-        "arguments": {"s":`${this.state.sym}`}
+        "arguments": {"s":`${this.state.symbol}`}
       }
-    }).then(res => res.data).then(res => {
-      this.setState({ prices: res.result });
-      console.log('1 DAY', this.state.prices);
+    }).then(resVol => resVol.data).then(resVol => {
+      this.setState({ vol: resVol.result });
+      console.log('1 DAY', this.state.vol);
 
     });
 
   };
 
-  sevenDay = () => {
+//   sevenDay = () => {
 
-    this.state.todaydate = false;
+//     this.state.todaydate = false;
 
-    axios({
-      url:URL,
-      method: 'post',
-      headers: {Authorization: authorization},
-      data: {
-        "function_name": ".qrest.volsevget",
-        "arguments": {"s":`${this.state.sym}`}
-      }
-    }).then(res => res.data).then(res => {
-      this.setState({ prices: res.result });
-      console.log('1 DAY', this.state.prices);
+//     axios({
+//       url:URL,
+//       method: 'post',
+//       headers: {Authorization: authorization},
+//       data: {
+//         "function_name": ".qrest.volsevget",
+//         "arguments": {"s":`${this.state.symbol}`}
+//       }
+//     }).then(resVol => resVol.data).then(resVol => {
+//       this.setState({ vol: resVol.result });
+//       console.log('1 DAY', this.state.vol);
 
-    });
+//     });
 
-};
+// };
 
   render() {
     return (
       <div>
 
         <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
-          <select onChange={this.handleChange} onClick={this.oneDay} id="syms"
+          <select onChange={this.handleChange} onClick={this.oneDay} id="symbols"
             className="py-1 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
             <option value="AAPL">AAPL</option>
             <option value="IBM">IBM</option>
@@ -156,13 +156,13 @@ export default class Vol extends React.Component {
           3D
           </button>
           <button onClick={this.fiveDay} type="button" 
-          className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
+          className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
           5D
           </button>
-          <button onClick={this.sevenDay} type="button" 
+          {/* <button onClick={this.sevenDay} type="button" 
           className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
           7D
-          </button>
+          </button> */}
         </div>
         
         <div>
@@ -179,7 +179,7 @@ export default class Vol extends React.Component {
         
             <Inject services={[LineSeries, Category, DateTime, Tooltip, Legend, Zoom, ScrollBar]}></Inject>
             <SeriesCollectionDirective>
-            <SeriesDirective type="Line" dataSource={this.state.prices} xName="time" yName="std" name={`${this.state.sym}`}></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.vol} xName="time" yName="std" name={`${this.state.symbol}`}></SeriesDirective>
             </SeriesCollectionDirective>
             </ChartComponent>
             
@@ -196,7 +196,7 @@ export default class Vol extends React.Component {
             legendSettings={{ visible: true, background: 'white' }}>
             <Inject services={[LineSeries, Category, DateTime, Tooltip, Legend, Zoom, ScrollBar]}></Inject>
             <SeriesCollectionDirective>
-            <SeriesDirective type="Line" dataSource={this.state.prices} xName="time" yName="std" name={`${this.state.sym}`}></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.vol} xName="time" yName="std" name={`${this.state.symbol}`}></SeriesDirective>
             </SeriesCollectionDirective>
             </ChartComponent>
         )}

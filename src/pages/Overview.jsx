@@ -7,22 +7,17 @@ import PriceHistory from '../components/getPriceHistory';
 import MaxVolume from '../components/getMaxVol';
 import ValueCache from '../components/getValueCache';
 import MaxMin from '../components/getMinMax';
+import Vol from '../components/getVolatility';
+import RunAvg from '../components/getAvg';
 
 // import { BsCurrencyDollar } from 'react-icons/bs';
 // import { GoPrimitiveDot } from 'react-icons/go';
 // import { IoIosMore } from 'react-icons/io';
-// import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
 import { Stacked, Pie, Button, LineChart, SparkLine } from '../components';
-// import { earningData, medicalproBranding, weeklyStats, dropdownDate, dropdownSym, SparklineAreaData, ecomPieChartData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-// import product9 from '../data/product9.jpg';
 import { ChartsHeader } from '../components';
 
-// const DropDown = () => (
-//   <div className="w-28 border-1 border-color px-3 py-2 rounded-md text-sm font-medium">
-//     <DropDownListComponent fields={{ text: 'sym' }} style={{ border: 'none' }} value="1" dataSource={dropdownSym} popupHeight="220px" popupWidth="120px" />
-//   </div>
-// );
+
 
 const current = new Date();
 const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -70,6 +65,21 @@ const { currentColor, currentMode } = useStateContext();
       <PriceHistory />
       </div>
       </div>
+
+      <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+      <ChartsHeader category="Running Average" />
+      <div className="w-full">
+        <RunAvg /> 
+      </div>
+      </div>
+
+      {/* <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+      <ChartsHeader category="Volatility Graph" />
+      <div className="w-full">
+        <Vol /> 
+      </div>
+      </div> */}
+
     </div>
   );
 };

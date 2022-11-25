@@ -69,7 +69,7 @@ const App = () => {
                 <Route path="/overview" element={(<Overview />)} />
 
                 {/* pages  */}
-                <Route path="/runningAvg" element={<RunningAvg />} />
+                {/* <Route path="/runningAvg" element={<RunningAvg />} /> */}
                 <Route path="/volatility" element={<Volatility />} />
                 <Route path="/customers" element={<Customers />} />
 

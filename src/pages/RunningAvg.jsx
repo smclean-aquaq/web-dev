@@ -1,20 +1,20 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import { ChartsHeader } from '../components';
+// import React from 'react';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min';
+// import { ChartsHeader } from '../components';
 
-import RunAvg from '../components/getAvg';
+// import RunAvg from '../components/getAvg';
 
-const RunningAvg = () => (
-  <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
-    <ChartsHeader category="Running Average" />
-    <div className="w-full">
-      <RunAvg /> 
-    </div>
-  </div>
-);
+// const RunningAvg = () => (
+//   <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+//     <ChartsHeader category="Running Average" />
+//     <div className="w-full">
+//       <RunAvg /> 
+//     </div>
+//   </div>
+// );
 
-export default RunningAvg;
+// export default RunningAvg;
 
 // import React from 'react';
 // import { GridComponent, ColumnsDirective, ColumnDirective, Resize, Sort, ContextMenu, Filter, Page, ExcelExport, PdfExport, Edit, Inject } from '@syncfusion/ej2-react-grids';

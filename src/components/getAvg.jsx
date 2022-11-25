@@ -8,14 +8,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
   export default class RunAvg extends React.Component {
 
     state = {
-      instruments: [],
+      avg: [],
     };
-
-    handleChange=(e)=>{
-      this.setState({
-        filter: e.target.value
-      })
-    }
 
     componentDidMount() {
       axios({
@@ -26,9 +20,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"AAPL"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('aapl', res);
-        this.setState({ aapls: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ aaplAvg: resAvg.result});
       });
 
       axios({
@@ -39,9 +32,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"AIG"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('aig', res);
-        this.setState({ aigs: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ aigsAvg: resAvg.result});
       });
 
       axios({
@@ -52,9 +44,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"AMD"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('amd', res);
-        this.setState({ amds: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ amdsAvg: resAvg.result});
       });
 
       axios({
@@ -65,9 +56,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"DELL"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('dell', res);
-        this.setState({ dells: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ dellsAvg: resAvg.result});
       });
 
       axios({
@@ -78,9 +68,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"DOW"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('dow', res);
-        this.setState({ dows: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ dowsAvg: resAvg.result});
       });
 
       axios({
@@ -91,9 +80,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"GOOG"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('goog', res);
-        this.setState({ googs: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ googsAvg: resAvg.result});
       });
 
       axios({
@@ -104,9 +92,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"HPQ"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('hpq', res);
-        this.setState({ hpqs: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ hpqsAvg: resAvg.result});
       });
 
       axios({
@@ -117,9 +104,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"IBM"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('ibm', res);
-        this.setState({ ibms: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ ibmsAvg: resAvg.result});
       });
 
       axios({
@@ -130,9 +116,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"INTC"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('intc', res);
-        this.setState({ intcs: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ intcsAvg: resAvg.result});
       });
 
       axios({
@@ -143,9 +128,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
           "function_name": ".qrest.avg",
           "arguments": {"s":"MSFT"}
         }
-      }).then(res => res.data).then(res => {
-        console.log('msft', res);
-        this.setState({ msfts: res.result});
+      }).then(resAvg => resAvg.data).then(resAvg => {
+        this.setState({ msftsAvg: resAvg.result});
       });
 
   }
@@ -165,16 +149,16 @@ const authorization = `Basic dXNlcjpwYXNz`;
 
           <Inject services={[LineSeries, Category, DateTime, Tooltip, Legend, Zoom, ScrollBar]}></Inject>
           <SeriesCollectionDirective>
-            <SeriesDirective type="Line" dataSource={this.state.aapls} xName="curtime" yName="runavg" name="AAPL"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.aigs} xName="curtime" yName="runavg" name="AIG"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.amds} xName="curtime" yName="runavg" name="AMD"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.dells} xName="curtime" yName="runavg" name="DELL"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.dows} xName="curtime" yName="runavg" name="DOW"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.googs} xName="curtime" yName="runavg" name="GOOG"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.hpqs} xName="curtime" yName="runavg" name="HPQ"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.ibms} xName="curtime" yName="runavg" name="IBM"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.intcs} xName="curtime" yName="runavg" name="INTC"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.msfts} xName="curtime" yName="runavg" name="MSFT"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.aaplsAvg} xName="time" yName="runavg" name="AAPL"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.aigsAvg} xName="time" yName="runavg" name="AIG"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.amdsAvg} xName="time" yName="runavg" name="AMD"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.dellsAvg} xName="time" yName="runavg" name="DELL"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.dowsAvg} xName="time" yName="runavg" name="DOW"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.googsAvg} xName="time" yName="runavg" name="GOOG"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.hpqsAvg} xName="time" yName="runavg" name="HPQ"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.ibmsAvg} xName="time" yName="runavg" name="IBM"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.intcsAvg} xName="time" yName="runavg" name="INTC"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.msftsAvg} xName="time" yName="runavg" name="MSFT"></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>

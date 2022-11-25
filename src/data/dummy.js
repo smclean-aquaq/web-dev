@@ -483,10 +483,10 @@ export const links = [
   {
     title: 'Analytics',
     links: [
-      {
-        name: 'runningAvg',
-        icon: <AiOutlineLineChart />,
-      },
+      // {
+      //   name: 'runningAvg',
+      //   icon: <AiOutlineLineChart />,
+      // },
       {
         name: 'volatility',
         icon: <AiOutlineFund />,

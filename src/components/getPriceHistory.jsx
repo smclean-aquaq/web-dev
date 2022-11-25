@@ -37,6 +37,8 @@ export default class PriceHistory extends React.Component {
 
   componentDidMount() {
 
+    this.state.rdb=true;
+
     axios({
       url:URL,
       method: 'post',
@@ -517,7 +519,8 @@ export default class PriceHistory extends React.Component {
 
       <ChartComponent 
         id="charts"
-        primaryXAxis={{valueType:"DateTime", enableAutoIntervalOnZooming: true, interval: 1, intervalType:'Hours', rangePadding:'None'}}
+        primaryXAxis={{valueType:"DateTime", title: "Time", enableAutoIntervalOnZooming: true, interval: 1, intervalType:'Hours', rangePadding:'None'}}
+        primaryYAxis={{title:"Price"}}
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
         zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true}}
@@ -532,7 +535,8 @@ export default class PriceHistory extends React.Component {
 
       <ChartComponent 
         id="charts"
-        primaryXAxis={{valueType:"DateTime", enableAutoIntervalOnZooming: true, interval: 0.5, intervalType:'Days', rangePadding:'None'}}
+        primaryXAxis={{valueType:"DateTime", title: "Time", enableAutoIntervalOnZooming: true, interval: 0.5, intervalType:'Days', rangePadding:'None'}}
+        primaryYAxis={{title:"Price"}}
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
         zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true}}
