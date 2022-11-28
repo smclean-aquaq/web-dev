@@ -1,7 +1,7 @@
 export { default as Overview } from './Overview';
 export { default as Kanban } from './Kanban';
 // export { default as RunningAvg } from './RunningAvg';
-export { default as Volatility } from './Volatility';
+// export { default as Volatility } from './Volatility';
 export { default as Editor } from './Editor';
 export { default as Customers } from './Customers';
 export { default as ColorPicker } from './ColorPicker';

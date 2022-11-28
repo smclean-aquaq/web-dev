@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Legend, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
 
-
 const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
@@ -25,25 +24,27 @@ export default class Vol extends React.Component {
       this.state = {selectValue: ''};  // initial state value
     }
   
-    handleChange = (e) => {
+    dropDownChange = (e) => {
       this.setState({symbol: e.target.value});
       console.log(`${this.state.symbol}`)
     } 
 
   componentDidMount() {
     
-      this.state.todaydate = true;
+      this.state.todaydate=true;
+      this.state.symbol="AAPL"
+
       axios({
         url:URL,
         method: 'post',
         headers: {Authorization: authorization},
         data: {
-          "function_name": ".qrest.getvolone",
+          "function_name": ".qrest.volatilityone",
           "arguments": {"s": "AAPL"}
         }
       }).then(resVol => resVol.data).then(resVol => {
         this.setState({vol:resVol.result});
-        console.log('aapl vol', this.state.vol);
+        console.log('1D Volatility Startup', this.state.vol);
       });
     
       
@@ -58,15 +59,14 @@ export default class Vol extends React.Component {
         method: 'post',
         headers: {Authorization: authorization},
         data: {
-          "function_name": ".qrest.getvolone",
+          "function_name": ".qrest.volatilityone",
           "arguments": {"s":`${this.state.symbol}`}
         }
       }).then(resVol => resVol.data).then(resVol => {
         this.setState({ vol: resVol.result });
-        console.log('1 DAY', this.state.vol);
+        console.log('1D Volatility', this.state.vol);
   
       });
-  
 
   };
 
@@ -79,12 +79,12 @@ export default class Vol extends React.Component {
         method: 'post',
         headers: {Authorization: authorization},
         data: {
-          "function_name": ".qrest.testvolthr",
+          "function_name": ".qrest.volatilitythree",
           "arguments": {"s":`${this.state.symbol}`}
         }
       }).then(resVol => resVol.data).then(resVol => {
         this.setState({ vol: resVol.result });
-        console.log('1 DAY', this.state.vol);
+        console.log('3D Volatility', this.state.vol);
   
       });
   
@@ -97,43 +97,23 @@ export default class Vol extends React.Component {
       method: 'post',
       headers: {Authorization: authorization},
       data: {
-        "function_name": ".qrest.volfiveget",
+        "function_name": ".qrest.volatilityfive",
         "arguments": {"s":`${this.state.symbol}`}
       }
     }).then(resVol => resVol.data).then(resVol => {
       this.setState({ vol: resVol.result });
-      console.log('1 DAY', this.state.vol);
+      console.log('5D Volatility', this.state.vol);
 
     });
 
   };
-
-//   sevenDay = () => {
-
-//     this.state.todaydate = false;
-
-//     axios({
-//       url:URL,
-//       method: 'post',
-//       headers: {Authorization: authorization},
-//       data: {
-//         "function_name": ".qrest.volsevget",
-//         "arguments": {"s":`${this.state.symbol}`}
-//       }
-//     }).then(resVol => resVol.data).then(resVol => {
-//       this.setState({ vol: resVol.result });
-//       console.log('1 DAY', this.state.vol);
-
-//     });
-
-// };
 
   render() {
     return (
       <div>
 
         <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
-          <select onChange={this.handleChange} onClick={this.oneDay} id="symbols"
+          <select onChange={this.dropDownChange} onClick={this.oneDay} id="symbols"
             className="py-1 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
             <option value="AAPL">AAPL</option>
             <option value="IBM">IBM</option>
@@ -159,13 +139,9 @@ export default class Vol extends React.Component {
           className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
           5D
           </button>
-          {/* <button onClick={this.sevenDay} type="button" 
-          className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-          7D
-          </button> */}
         </div>
         
-        <div>
+        <div id='volatilityChart'>
           {this.state.todaydate === true ? (
             <ChartComponent 
             id="line-chart"
@@ -177,7 +153,7 @@ export default class Vol extends React.Component {
             zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true, mode: "X"}}
             legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
         
-            <Inject services={[LineSeries, Category, DateTime, Tooltip, Legend, Zoom, ScrollBar]}></Inject>
+            <Inject services={[LineSeries, Category, DateTime, Tooltip, Zoom, ScrollBar]}></Inject>
             <SeriesCollectionDirective>
             <SeriesDirective type="Line" dataSource={this.state.vol} xName="time" yName="std" name={`${this.state.symbol}`}></SeriesDirective>
             </SeriesCollectionDirective>
@@ -194,7 +170,7 @@ export default class Vol extends React.Component {
             tooltip={{ enable: true }}
             zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true, mode: "XY"}}
             legendSettings={{ visible: true, background: 'white' }}>
-            <Inject services={[LineSeries, Category, DateTime, Tooltip, Legend, Zoom, ScrollBar]}></Inject>
+            <Inject services={[LineSeries, Category, DateTime, Tooltip, Zoom, ScrollBar]}></Inject>
             <SeriesCollectionDirective>
             <SeriesDirective type="Line" dataSource={this.state.vol} xName="time" yName="std" name={`${this.state.symbol}`}></SeriesDirective>
             </SeriesCollectionDirective>

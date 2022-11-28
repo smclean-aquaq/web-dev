@@ -487,10 +487,10 @@ export const links = [
       //   name: 'runningAvg',
       //   icon: <AiOutlineLineChart />,
       // },
-      {
-        name: 'volatility',
-        icon: <AiOutlineFund />,
-      },
+      // {
+      //   name: 'volatility',
+      //   icon: <AiOutlineFund />,
+      // },
     ],
   },
   // {

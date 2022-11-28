@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Overview, RunningAvg, Calendar, Volatility, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
+import { Overview, Calendar, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -70,7 +70,7 @@ const App = () => {
 
                 {/* pages  */}
                 {/* <Route path="/runningAvg" element={<RunningAvg />} /> */}
-                <Route path="/volatility" element={<Volatility />} />
+                {/* <Route path="/volatility" element={<Volatility />} /> */}
                 <Route path="/customers" element={<Customers />} />
 
                 {/* apps  */}
