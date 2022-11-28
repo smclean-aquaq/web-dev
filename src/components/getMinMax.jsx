@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useStateContext } from '../contexts/ContextProvider';
 
 
-const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
   export default class MaxMin extends React.Component {
@@ -70,32 +70,32 @@ const authorization = `Basic dXNlcjpwYXNz`;
       });
   }
 
-  getOneHour = () => {
-    axios({
-    url:URL,
-    method: 'post',
-    headers: {Authorization: authorization},
-    data: {
-        "function_name": ".qrest.maxmin1hr", 
-        "arguments": {}
-    }
-    }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
-    console.log('max min', res.result);
-    });
-  }
+  // getOneHour = () => {
+  //   axios({
+  //   url:URL,
+  //   method: 'post',
+  //   headers: {Authorization: authorization},
+  //   data: {
+  //       "function_name": ".qrest.maxmin1hr", 
+  //       "arguments": {}
+  //   }
+  //   }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
+  //   console.log('max min', res.result);
+  //   });
+  // }
 
-    getThreeHour = () => {
-      axios({
-      url:URL,
-      method: 'post',
-      headers: {Authorization: authorization},
-      data: {
-          "function_name": ".qrest.maxmin3hr", 
-          "arguments": {}
-      }
-      }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
-      console.log('max min', res.result);
-      });
+  //   getThreeHour = () => {
+  //     axios({
+  //     url:URL,
+  //     method: 'post',
+  //     headers: {Authorization: authorization},
+  //     data: {
+  //         "function_name": ".qrest.maxmin3hr", 
+  //         "arguments": {}
+  //     }
+  //     }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
+  //     console.log('max min', res.result);
+  //     });
     }
   
   render() {
@@ -142,8 +142,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
             <p>{instrument.sym}</p>
             </div>
             </div>
-        <p>$ {instrument.minprice}</p>
-        <p>$ {instrument.maxprice}</p>
+        <p>$ {instrument.minprice.toLocaleString(undefined, {maximumFractionDigits:2})}</p>
+        <p>$ {instrument.maxprice.toLocaleString(undefined, {maximumFractionDigits:2})}</p>
         </div>
         ))}
     </div>

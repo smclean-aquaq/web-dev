@@ -101,7 +101,7 @@ render() {
             <p>{instrument.sym}</p>
             </div>
             </div>
-        <p>{instrument.vol}</p>
+        <p>{instrument.vol.toLocaleString(undefined, {maximumFractionDigits:2})}</p>
         </div>
         ))}
     </div>

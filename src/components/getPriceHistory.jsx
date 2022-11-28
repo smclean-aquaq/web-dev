@@ -38,6 +38,7 @@ export default class PriceHistory extends React.Component {
   componentDidMount() {
 
     this.state.rdb=true;
+    this.state.sym="AAPL"
 
     axios({
       url:URL,
@@ -474,8 +475,6 @@ export default class PriceHistory extends React.Component {
     // });
 
   };
-
-  
 
   render() {
 

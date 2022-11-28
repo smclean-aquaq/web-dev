@@ -42,7 +42,7 @@ const authorization = `Basic dXNlcjpwYXNz`;
                     <tbody>
                         <tr className="bg-gray-50 items-center transition duration-150 ease-in-out hover:bg-gray-100">
                             <td className="p-2 border-r text-md font-semibold">{instrument.sym}</td>
-                            <td className={`text-${instrument.pcColor} p-2 border-r text-md font-semibold`}>${instrument.lastprice.toFixed(2)}</td>
+                            <td className={`text-${instrument.pcColor} p-2 border-r text-md font-semibold`}>${instrument.lastprice.toFixed(2) && instrument.lastprice.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
                             <td className="p-2 border-r">
                                 <a href="#">
                                     <svg 

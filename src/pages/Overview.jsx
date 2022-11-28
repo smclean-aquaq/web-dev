@@ -28,9 +28,7 @@ const { currentColor, currentMode } = useStateContext();
 
   return (
     <div>
-      <div className="flex gap-4 m-4 flex-wrap justify-left w-full">
-      <div className="flex justify-between items-center mt-5 border-t-1 border-color">
-      </div>  
+      <div className="flex gap-4 m-4 flex-wrap justify-left w-full"> 
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl ">
         <div className="flex justify-between items-center gap-2">
         <p className="text-xl font-semibold">Value Cache Table</p>
@@ -51,7 +49,7 @@ const { currentColor, currentMode } = useStateContext();
 
       <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
       <div className="flex justify-between items-center gap-2">
-        <p className="text-xl font-semibold">Highest Traded Instrument</p>
+        <p className="text-xl font-semibold">Price Range</p>
       </div>
       <div className="mt-5 w-72 md:w-400">
         <MaxMin/>
