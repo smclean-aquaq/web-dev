@@ -10,28 +10,24 @@ export default class Vol extends React.Component {
     state = {
       vol: [],
     };
-    
-    state = {
-      filter:""
-    };
 
-    state = {
-      todaydate:false
+    date = {
+      todaydate:false,
     };
 
     constructor() {  
       super();  
-      this.state = {selectValue: ''};  // initial state value
+      this.symValue = {selectValue: ''};  // initial state value
     }
   
-    dropDownChange = (e) => {
+    handleChange = (e) => {
       this.setState({symbol: e.target.value});
       console.log(`${this.state.symbol}`)
     } 
 
   componentDidMount() {
     
-      this.state.todaydate=true;
+      this.date.todaydate=true;
       this.state.symbol="AAPL"
 
       axios({
@@ -52,7 +48,7 @@ export default class Vol extends React.Component {
 
   oneDay = () => {
 
-      this.state.todaydate = true;
+      this.date.todaydate=true;
 
       axios({
         url:URL,
@@ -72,7 +68,7 @@ export default class Vol extends React.Component {
 
   threeDay = () => {
 
-      this.state.todaydate = false;
+      this.date.todaydate=false;
 
       axios({
         url:URL,
@@ -92,6 +88,8 @@ export default class Vol extends React.Component {
 
   fiveDay = () => {
 
+    this.date.todaydate=false;
+
     axios({
       url:URL,
       method: 'post',
@@ -110,10 +108,10 @@ export default class Vol extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='volatilityChart'>
 
         <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
-          <select onChange={this.dropDownChange} onClick={this.oneDay} id="symbols"
+          <select onChange={this.handleChange} onClick={this.oneDay} id="symbols"
             className="py-1 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
             <option value="AAPL">AAPL</option>
             <option value="IBM">IBM</option>
@@ -141,10 +139,9 @@ export default class Vol extends React.Component {
           </button>
         </div>
         
-        <div id='volatilityChart'>
-          {this.state.todaydate === true ? (
+        <div>
+          {this.date.todaydate === true ? (
             <ChartComponent 
-            id="line-chart"
             height="420px"
             primaryXAxis={{valueType:"DateTime", title: "Time", enableAutoIntervalOnZooming:true, intervalType:"Hours", interval:1}}
             primaryYAxis={{title: "Standard Deviation"}}
@@ -162,7 +159,6 @@ export default class Vol extends React.Component {
           ) : (
 
             <ChartComponent 
-            id="line-chart"
             height="420px"
             primaryXAxis={{valueType:"DateTime", title: "Time", enableAutoIntervalOnZooming:true, interval:0.5, intervalType:'Days'}}
             primaryYAxis={{title: "Standard Deviation"}}
