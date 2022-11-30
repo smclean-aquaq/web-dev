@@ -5,7 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, DataLabel, LineSeries, DateTime, Legend, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
 
 
-const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
 
 export default class RealPrice extends React.Component {

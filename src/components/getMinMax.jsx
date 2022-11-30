@@ -68,6 +68,35 @@ export default class MaxMin extends React.Component {
       });
   }
   
+  getFourDay = () => {
+      axios({
+      url:URL,
+      method: 'post',
+      headers: {Authorization: authorization},
+      data: {
+          "function_name": ".qrest.maxminthree", 
+          "arguments": {}
+      }
+      }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
+      console.log('max min', res.result);
+      });
+  }
+
+  getFiveDay = () => {
+    axios({
+    url:URL,
+    method: 'post',
+    headers: {Authorization: authorization},
+    data: {
+        "function_name": ".qrest.maxminfour", 
+        "arguments": {}
+    }
+    }).then(res => res.data).then(res => {this.setState({ instruments: res.result }); 
+    console.log('max min', res.result);
+    });
+  }
+
+  
   render() {
     return (
     <div>
@@ -78,10 +107,18 @@ export default class MaxMin extends React.Component {
                 1D
                 </button>
                 <button onClick={this.getTwoDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                3D
+                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-r border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
+                2D
                 </button>
                 <button onClick={this.getThreeDay} type="button" 
+                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-r border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
+                3D
+                </button>
+                <button onClick={this.getFourDay} type="button" 
+                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
+                4D
+                </button>
+                <button onClick={this.getFiveDay} type="button" 
                 className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
                 5D
                 </button>
