@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Legend, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, Legend, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
 
-const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
 export default class RunAvg extends React.Component {
@@ -34,7 +34,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"AIG"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ aigsAvg: resAvg.result});
+      this.setState({ aigAvg: resAvg.result});
     });
 
     axios({
@@ -46,7 +46,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"AMD"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ amdsAvg: resAvg.result});
+      this.setState({ amdAvg: resAvg.result});
     });
 
     axios({
@@ -58,7 +58,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"DELL"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ dellsAvg: resAvg.result});
+      this.setState({ dellAvg: resAvg.result});
     });
 
     axios({
@@ -70,7 +70,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"DOW"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ dowsAvg: resAvg.result});
+      this.setState({ dowAvg: resAvg.result});
     });
 
     axios({
@@ -82,7 +82,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"GOOG"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ googsAvg: resAvg.result});
+      this.setState({ googAvg: resAvg.result});
     });
 
     axios({
@@ -94,7 +94,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"HPQ"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ hpqsAvg: resAvg.result});
+      this.setState({ hpqAvg: resAvg.result});
     });
 
     axios({
@@ -106,7 +106,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"IBM"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ ibmsAvg: resAvg.result});
+      this.setState({ ibmAvg: resAvg.result});
     });
 
     axios({
@@ -118,7 +118,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"INTC"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ intcsAvg: resAvg.result});
+      this.setState({ intcAvg: resAvg.result});
     });
 
     axios({
@@ -130,7 +130,7 @@ export default class RunAvg extends React.Component {
         "arguments": {"s":"MSFT"}
       }
     }).then(resAvg => resAvg.data).then(resAvg => {
-      this.setState({ msftsAvg: resAvg.result});
+      this.setState({ msftAvg: resAvg.result});
     });
 
 
@@ -138,13 +138,11 @@ export default class RunAvg extends React.Component {
 
   render() { 
     return (
-      
-      <div id='runAvgChart'>
-
-        <div>
+      <div>
+      <p className="text-xl font-semibold mb-8">Running Average</p>
+      <div className='mt-16'>
         <ChartComponent 
-          height="420px"
-          primaryXAxis={{valueType:"Category", title: "Time", enableAutoIntervalOnZooming: true, rangePadding:'None'}}
+          primaryXAxis={{valueType:"Category", title: "Time", interval: 20, enableAutoIntervalOnZooming: true, rangePadding:'None'}}
           primaryYAxis={{title: "Dollar Price ($)"}}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
@@ -152,20 +150,19 @@ export default class RunAvg extends React.Component {
           legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
           <Inject services={[LineSeries, Category, Legend, Tooltip, Zoom, ScrollBar]}></Inject>
           <SeriesCollectionDirective>
-            <SeriesDirective type="Line" dataSource={this.state.aaplsAvg} xName="time" yName="runavg" name="AAPL"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.aigsAvg} xName="time" yName="runavg" name="AIG"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.amdsAvg} xName="time" yName="runavg" name="AMD"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.dellsAvg} xName="time" yName="runavg" name="DELL"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.dowsAvg} xName="time" yName="runavg" name="DOW"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.googsAvg} xName="time" yName="runavg" name="GOOG"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.hpqsAvg} xName="time" yName="runavg" name="HPQ"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.ibmsAvg} xName="time" yName="runavg" name="IBM"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.intcsAvg} xName="time" yName="runavg" name="INTC"></SeriesDirective>
-            <SeriesDirective type="Line" dataSource={this.state.msftsAvg} xName="time" yName="runavg" name="MSFT"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.aaplAvg} xName="time" yName="runavg" name="AAPL"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.aigAvg} xName="time" yName="runavg" name="AIG"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.amdAvg} xName="time" yName="runavg" name="AMD"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.dellAvg} xName="time" yName="runavg" name="DELL"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.dowAvg} xName="time" yName="runavg" name="DOW"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.googAvg} xName="time" yName="runavg" name="GOOG"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.hpqAvg} xName="time" yName="runavg" name="HPQ"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.ibmAvg} xName="time" yName="runavg" name="IBM"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.intcAvg} xName="time" yName="runavg" name="INTC"></SeriesDirective>
+            <SeriesDirective type="Line" dataSource={this.state.msftAvg} xName="time" yName="runavg" name="MSFT"></SeriesDirective>
           </SeriesCollectionDirective>
         </ChartComponent>
-        </div>
-
+      </div>
       </div>
     )
   }

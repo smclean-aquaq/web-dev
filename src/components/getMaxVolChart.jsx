@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Legend, Category, Tooltip, ColumnSeries, DataLabel } from '@syncfusion/ej2-react-charts';
 
-const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
   export default class BarChart extends React.Component {
@@ -81,9 +81,8 @@ const authorization = `Basic dXNlcjpwYXNz`;
 
   render() { 
     return (
-      <div>
+      <div className='mt-8 justify-between items-center'>
         <ChartComponent 
-        id="chart"
         primaryXAxis = {{
             valueType:"Category", 
             interval: 1, 
@@ -98,7 +97,7 @@ const authorization = `Basic dXNlcjpwYXNz`;
         }}
         chartArea={{ border: { width: 0 } }}
         tooltip={{ enable: true }}
-        legendSettings={{ background: 'white' }}>
+        legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
 
           <Inject services={[ColumnSeries, Category, Tooltip, Legend]}></Inject>
           <SeriesCollectionDirective>

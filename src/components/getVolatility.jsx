@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Legend, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
+import { ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, LineSeries, DateTime, Tooltip, Category, Zoom, ScrollBar } from '@syncfusion/ej2-react-charts';
 
-const URL = 'https://homer.aquaq.co.uk:8025/executeFunction';
+const URL = 'https://homer.aquaq.co.uk:8050/executeFunction';
 const authorization = `Basic dXNlcjpwYXNz`;
  
 export default class Vol extends React.Component {
@@ -11,7 +11,7 @@ export default class Vol extends React.Component {
       vol: [],
     };
 
-    date = {
+    state = {
       todaydate:false,
     };
 
@@ -27,68 +27,67 @@ export default class Vol extends React.Component {
 
   componentDidMount() {
     
-      this.date.todaydate=true;
-      this.state.symbol="AAPL"
+    this.state.todaydate=true;
+    this.state.symbol="AAPL"
 
-      axios({
-        url:URL,
-        method: 'post',
-        headers: {Authorization: authorization},
-        data: {
-          "function_name": ".qrest.volatilityone",
-          "arguments": {"s": "AAPL"}
-        }
-      }).then(resVol => resVol.data).then(resVol => {
-        this.setState({vol:resVol.result});
-        console.log('1D Volatility Startup', this.state.vol);
-      });
+    axios({
+      url:URL,
+      method: 'post',
+      headers: {Authorization: authorization},
+      data: {
+        "function_name": ".qrest.volatilityone",
+        "arguments": {"s": "AAPL"}
+      }
+    }).then(resVol => resVol.data).then(resVol => {
+      this.setState({vol:resVol.result});
+      console.log('1D Volatility Startup', this.state.vol);
+    });
     
-      
   }; 
 
   oneDay = () => {
 
-      this.date.todaydate=true;
+    this.state.todaydate=true;
 
-      axios({
-        url:URL,
-        method: 'post',
-        headers: {Authorization: authorization},
-        data: {
-          "function_name": ".qrest.volatilityone",
-          "arguments": {"s":`${this.state.symbol}`}
-        }
-      }).then(resVol => resVol.data).then(resVol => {
-        this.setState({ vol: resVol.result });
-        console.log('1D Volatility', this.state.vol);
-  
-      });
+    axios({
+      url:URL,
+      method: 'post',
+      headers: {Authorization: authorization},
+      data: {
+        "function_name": ".qrest.volatilityone",
+        "arguments": {"s":`${this.state.symbol}`}
+      }
+    }).then(resVol => resVol.data).then(resVol => {
+      this.setState({ vol: resVol.result });
+      console.log('1D Volatility', this.state.vol);
+
+    });
 
   };
 
   threeDay = () => {
 
-      this.date.todaydate=false;
+    this.state.todaydate=false;
 
-      axios({
-        url:URL,
-        method: 'post',
-        headers: {Authorization: authorization},
-        data: {
-          "function_name": ".qrest.volatilitythree",
-          "arguments": {"s":`${this.state.symbol}`}
-        }
-      }).then(resVol => resVol.data).then(resVol => {
-        this.setState({ vol: resVol.result });
-        console.log('3D Volatility', this.state.vol);
-  
-      });
+    axios({
+      url:URL,
+      method: 'post',
+      headers: {Authorization: authorization},
+      data: {
+        "function_name": ".qrest.volatilitythree",
+        "arguments": {"s":`${this.state.symbol}`}
+      }
+    }).then(resVol => resVol.data).then(resVol => {
+      this.setState({ vol: resVol.result });
+      console.log('3D Volatility', this.state.vol);
+
+    });
   
   };
 
   fiveDay = () => {
 
-    this.date.todaydate=false;
+    this.state.todaydate=false;
 
     axios({
       url:URL,
@@ -109,6 +108,7 @@ export default class Vol extends React.Component {
   render() {
     return (
       <div id='volatilityChart'>
+        <p className="text-xl font-semibold mb-8">Volatility</p>
 
         <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
           <select onChange={this.handleChange} onClick={this.oneDay} id="symbols"
@@ -116,13 +116,13 @@ export default class Vol extends React.Component {
             <option value="AAPL">AAPL</option>
             <option value="IBM">IBM</option>
             <option value="GOOG">GOOG</option>
-            <option value="AIG">AIG</option>
             <option value="AMD">AMD</option>
             <option value="DELL">DELL</option>
             <option value="DOW">DOW</option>
             <option value="HPQ">HPQ</option>
             <option value="INTC">INTC</option>
             <option value="MSFT">MSFT</option>
+            <option value="AIG">AIG</option>
           </select>
 
           <button onClick={this.oneDay} type="button" 
@@ -140,7 +140,7 @@ export default class Vol extends React.Component {
         </div>
         
         <div>
-          {this.date.todaydate === true ? (
+          {this.state.todaydate === true ? (
             <ChartComponent 
             height="420px"
             primaryXAxis={{valueType:"DateTime", title: "Time", enableAutoIntervalOnZooming:true, intervalType:"Hours", interval:1}}

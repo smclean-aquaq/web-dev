@@ -25,7 +25,7 @@ const App = () => {
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dark-bg">
-          <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
+          {/* <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }}>
             <TooltipComponent
               content="Settings"
               position="Top"
@@ -40,7 +40,7 @@ const App = () => {
               </button>
 
             </TooltipComponent>
-          </div>
+          </div> */}
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
@@ -64,22 +64,15 @@ const App = () => {
               {themeSettings && (<ThemeSettings />)}
 
               <Routes>
-                {/* dashboard  */}
                 <Route path="/" element={(<Overview />)} />
                 <Route path="/overview" element={(<Overview />)} />
-
-                {/* pages  */}
-                {/* <Route path="/runningAvg" element={<RunningAvg />} /> */}
-                {/* <Route path="/volatility" element={<Volatility />} /> */}
                 <Route path="/customers" element={<Customers />} />
 
-                {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/color-picker" element={<ColorPicker />} />
 
-                {/* charts  */}
                 <Route path="/line" element={<Line />} />
                 <Route path="/area" element={<Area />} />
                 <Route path="/bar" element={<Bar />} />
