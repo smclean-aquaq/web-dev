@@ -129,7 +129,7 @@ export default class PieChart extends React.Component {
 
         <div className="flex justify-between items-center mb-4 mt-8">
             <div className="inline-flex rounded-md shadow-sm" role="group">
-                <button onClick={this.getFiveDay} type="button" 
+                {/* <button onClick={this.getFiveDay} type="button" 
                 className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
                 1D
                 </button>
@@ -148,7 +148,39 @@ export default class PieChart extends React.Component {
                 <button onClick={this.getFourDay} type="button" 
                 className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
                 5D
-                </button>
+                </button> */}
+                <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div class="w-20 flex items-center pl-3">
+                            <input onClick={this.getOneDay} id="piechart" type="radio" value="" name="pie" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"/>
+                            <label for="piechart" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">1D </label>
+                        </div>
+                    </li>
+                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div class="w-20 flex items-center pl-3">
+                            <input onClick={this.getTwoDay} id="piechart" type="radio" value="" name="pie" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"/>
+                            <label for="piechart" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">2D</label>
+                        </div>
+                    </li>
+                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div class="w-20 flex items-center pl-3">
+                            <input onClick={this.getThreeDay} id="piechart" type="radio" value="" name="pie" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"/>
+                            <label for="piechart" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">3D</label>
+                        </div>
+                    </li>
+                    <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                        <div class="w-20 flex items-center pl-3">
+                            <input onClick={this.getFourDay} id="piechart" type="radio" value="" name="pie" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"/>
+                            <label for="piechart" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">4D</label>
+                        </div>
+                    </li>
+                    <li class="w-full dark:border-gray-600">
+                        <div class="w-20 flex items-center pl-3">
+                            <input onClick={this.getFiveDay} id="piechart" type="radio" value="" name="pie" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"/>
+                            <label for="piechart" class="py-3 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300">5D</label>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
