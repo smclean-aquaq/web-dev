@@ -15,6 +15,11 @@ export default class PieChart extends React.Component {
     instruments: [],
   };
 
+  constructor() {
+    super(...arguments);
+    this.palette = ['#9e0243',"#d53e51", '#fcaf61', "#f56c42", "#fdae61", '#e7f699', '#abdda0', '#64c1a4', '#3287bd', '#5f50a3'];
+  }
+
   componentDidMount() {
 
     axios({
@@ -152,7 +157,8 @@ export default class PieChart extends React.Component {
             chartArea={{ border: { width: 0 } }}
             height="565px"
             tooltip={{ enable: true }}
-            legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
+            legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12, toggleVisibility:false}}
+            palettes={this.palette}>
             <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]}></Inject>
             <AccumulationSeriesCollectionDirective>
                 <AccumulationSeriesDirective dataSource={this.state.piechart} xName="sym" yName="sumvol" name="Volume" explode explodeOffset='10%'
