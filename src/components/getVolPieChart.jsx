@@ -18,6 +18,10 @@ export default class PieChart extends React.Component {
   constructor() {
     super(...arguments);
     this.palette = ['#9e0243',"#d53e51", '#fcaf61', "#f56c42", "#fdae61", '#e7f699', '#abdda0', '#64c1a4', '#3287bd', '#5f50a3'];
+    
+    this.datalabel={ visible: true, name:'sym', position:'Outside', font:{fontWeight: '400', size:'16'}, border: { width: 1, color: 'transparent' },
+    margin: {left: 10, right: 10, top: 10, bottom: 10}
+    };
   }
 
   componentDidMount() {
@@ -126,29 +130,9 @@ export default class PieChart extends React.Component {
   render() { 
     return (
     <div>
-
+        <p className="text-xl font-semibold mb-8 mt-2 text-slate-800">Volume Distribution</p>
         <div className="flex justify-between items-center mb-4 mt-8">
             <div className="inline-flex rounded-md shadow-sm" role="group">
-                {/* <button onClick={this.getFiveDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                1D
-                </button>
-                <button onClick={this.getOneDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-r border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                2D
-                </button>
-                <button onClick={this.getTwoDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-r border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                3D
-                </button>
-                <button onClick={this.getThreeDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                4D
-                </button>
-                <button onClick={this.getFourDay} type="button" 
-                className="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">
-                5D
-                </button> */}
                 <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                         <div class="w-20 flex items-center pl-3">
@@ -186,21 +170,15 @@ export default class PieChart extends React.Component {
 
         <div className='mt-8 justify-between items-center'>
         <AccumulationChartComponent
+            enableSmartLabels='true'
             chartArea={{ border: { width: 0 } }}
             height="565px"
             tooltip={{ enable: true }}
-            legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12, toggleVisibility:false}}
+            legendSettings={{ visible: false, background: 'white', position: "Bottom", shapeHeight:14, shapeWidth:16, toggleVisibility:false}}
             palettes={this.palette}>
             <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]}></Inject>
             <AccumulationSeriesCollectionDirective>
-                <AccumulationSeriesDirective dataSource={this.state.piechart} xName="sym" yName="sumvol" name="Volume" explode explodeOffset='10%'
-                dataLabel={{ visible: true, name:'pervol', position:'Outside', font:{fontWeight: '400', size:'16'}, border: { width: 1, color: 'transparent' },
-                margin: {
-                    left: 10,
-                    right: 10,
-                    top: 10,
-                    bottom: 10
-                }}}>
+                <AccumulationSeriesDirective dataSource={this.state.piechart} xName="sym" yName="sumvol" name="Volume" explode explodeOffset='10%' dataLabel={this.datalabel}>
                 </AccumulationSeriesDirective>
             </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>

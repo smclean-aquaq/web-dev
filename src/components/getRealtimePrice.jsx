@@ -147,7 +147,7 @@ export default class RealPrice extends React.Component {
   render() {
     return (
     <div>
-      <p className="text-xl font-semibold mb-8">Realtime Price</p>
+      <p className="text-xl font-semibold mt-2 mb-12 text-slate-800">Realtime Price</p>
       <ChartComponent 
         primaryXAxis={{valueType:"Category", title: "Time", enableAutoIntervalOnZooming: true, interval: 30, intervalType:'Hours', rangePadding:'None'}}
         primaryYAxis={{title:"Price"}}
@@ -160,7 +160,7 @@ export default class RealPrice extends React.Component {
           shape: 'Pentagon',
           dataLabel: { visible: true }
         }}
-        legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
+        legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:14, shapeWidth:20 }}>
         <Inject services={[LineSeries, Category, DateTime, Tooltip, Zoom, ScrollBar, DataLabel, Legend]}></Inject>
         <SeriesCollectionDirective>
             <SeriesDirective type="Line" dataSource={this.state.curraapl} xName="time" yName="price" name="AAPL"></SeriesDirective>

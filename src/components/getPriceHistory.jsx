@@ -128,7 +128,7 @@ export default class PriceHistory extends React.Component {
     return (
 
     <div>
-      <p className="text-xl font-semibold mb-8">Price History</p>
+      <p className="text-xl font-semibold mt-2 mb-8 text-slate-800">Price History</p>
       <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
       <select onChange={this.handleChange} onClick={this.getOneDay} id="syms"
       className="py-1 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-#1a97f5 focus:z-10 focus:ring-2 focus:ring-#1a97f5 focus:text-#1a97f5 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-#1a97f5 dark:focus:text-white">

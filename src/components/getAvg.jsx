@@ -139,15 +139,15 @@ export default class RunAvg extends React.Component {
   render() { 
     return (
       <div>
-      <p className="text-xl font-semibold mb-8">Running Average</p>
-      <div className='mt-16'>
+      <p className="text-xl font-semibold mt-2 text-slate-800">Running Average</p>
+      <div className='mt-8'>
         <ChartComponent 
           primaryXAxis={{valueType:"Category", title: "Time", interval: 20, enableAutoIntervalOnZooming: true, rangePadding:'None'}}
           primaryYAxis={{title: "Dollar Price ($)"}}
           chartArea={{ border: { width: 0 } }}
           tooltip={{ enable: true }}
           zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true, mode: "X"}}
-          legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
+          legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:14, shapeWidth:26 }}>
           <Inject services={[LineSeries, Category, Legend, Tooltip, Zoom, ScrollBar]}></Inject>
           <SeriesCollectionDirective>
             <SeriesDirective type="Line" dataSource={this.state.aaplAvg} xName="time" yName="runavg" name="AAPL"></SeriesDirective>

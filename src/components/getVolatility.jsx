@@ -108,7 +108,7 @@ export default class Vol extends React.Component {
   render() {
     return (
       <div id='volatilityChart'>
-        <p className="text-xl font-semibold mb-8">Volatility</p>
+        <p className="text-xl font-semibold mt-2 mb-8 text-slate-800">Volatility</p>
 
         <div className="inline-flex rounded-md shadow-sm mb-8" role="group">
           <select onChange={this.handleChange} onClick={this.oneDay} id="symbols"
@@ -169,7 +169,7 @@ export default class Vol extends React.Component {
             chartArea={{ border: { width: 0 } }}
             tooltip={{ enable: true }}
             zoomSettings={{enableSelectionZooming: true, enablePan:true, enableScrollbar: true, mode: "X"}}
-            legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:10, shapeWidth:12 }}>
+            legendSettings={{ visible: true, background: 'white', position: "Bottom", shapeHeight:14, shapeWidth:16, }}>
         
             <Inject services={[LineSeries, Category, DateTime, Tooltip, Zoom, ScrollBar]}></Inject>
             <SeriesCollectionDirective>
