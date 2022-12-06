@@ -1,3 +1,10 @@
+---
+name: Feature
+about: Add a Feature
+title: '[FEATURE] <title>'
+assignees:
+---
+
 ## Current Behaviour
 
 
